@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<title>舟江寒-你可爱死了，全世界都那么觉得。</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="author" content="Ernest Chan" />
+<meta name="description" content="周江含，你可爱死了，全世界都那么觉得。" />
+<meta name="keywords" content="舟江寒,周江含" />
+<link rel="shortcut icon" href="https://baota.zhoujianghan.com/favicon.ico">
+<style>
+a{TEXT-DECORATION:none}
+/* latin-ext */
+@font-face {
+  font-family: 'Righteous';
+  font-styled: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Righteous';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  background: linear-gradient(90deg, #2f3640 23%, #181b20 100%);
+  overflow:hidden;
+}
+
+.moon {
+  background: linear-gradient(90deg, #d0d0d0 48%, #919191 100%);
+  position: absolute;
+  top: -100px;
+  left: -300px;
+  width: 900px;
+  height: 900px;
+  content: '';
+  border-radius: 100%;
+  box-shadow: 0px 0px 30px -4px rgba(0, 0, 0, 0.5);
+}
+
+.moon__crater {
+  position: absolute;
+  content: '';
+  border-radius: 100%;
+  background: linear-gradient(90deg, #7a7a7a 38%, #c3c3c3 100%);
+  opacity: 0.6;
+}
+
+.moon__crater1 {
+  top: 250px;
+  left: 500px;
+  width: 60px;
+  height: 180px;
+}
+
+.moon__crater2 {
+  top: 650px;
+  left: 340px;
+  width: 40px;
+  height: 80px;
+  transform: rotate(55deg);
+}
+
+.moon__crater3 {
+  top: -20px;
+  left: 40px;
+  width: 65px;
+  height: 120px;
+  transform: rotate(250deg);
+}
+
+.star {
+  background: grey;
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  content: '';
+  border-radius: 100%;
+  transform: rotate(250deg);
+  opacity: 0.4;
+  animation-name: shimmer;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes shimmer {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.7;
+  }
+}
+.star1 {
+  top: 40%;
+  left: 50%;
+  animation-delay: 1s;
+}
+
+.star2 {
+  top: 60%;
+  left: 90%;
+  animation-delay: 3s;
+}
+
+.star3 {
+  top: 10%;
+  left: 70%;
+  animation-delay: 2s;
+}
+
+.star4 {
+  top: 90%;
+  left: 40%;
+}
+
+.star5 {
+  top: 20%;
+  left: 30%;
+  animation-delay: 0.5s;
+}
+
+.error {
+  position: absolute;
+  left: 50px;
+  top: 400px;
+  transform: translateY(-60%);
+  font-family: 'Righteous', cursive;
+  color: #363e49;
+}
+
+.error__title {
+  font-size: 10em;
+}
+
+.error__subtitle {
+  font-size: 2em;
+}
+
+.error__description {
+  opacity: 0.5;
+}
+
+.error__button {
+  min-width: 5em;
+  margin-top: 2em;
+  margin-right: 0.5em;
+  padding: 0.5em 1.5em;
+  outline: none;
+  border: 2px solid #2f3640;
+  background-color: transparent;
+  border-radius: 8em;
+  color: #576375;
+  cursor: pointer;
+  transition-duration: 0.2s;
+  font-size: 1em;
+  font-family: 'Righteous', cursive;
+}
+
+.error__button:hover {
+  color: #21252c;
+}
+
+.error__button--active {
+  background-color: #e67e22;
+  border: 2px solid #e67e22;
+  color: white;
+}
+
+.error__button--active:hover {
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+</style>
+<script>
+'use strict';
+
+{
+    window.onload = function () {
+        const canvas = document.querySelector('canvas');
+        if (typeof canvas.getContext === 'undefined') {
+            return;
+        }
+        const ctx = canvas.getContext("2d");
+
+
+        // Canvas Resize
+        function fitCanvasSize() {
+
+            canvas.width = document.documentElement.clientWidth;
+            canvas.height = document.documentElement.clientHeight;
+
+        }
+        fitCanvasSize();
+        window.onresize = fitCanvasSize;
+
+        // RequestAnimationFrame
+        (function () {
+            var requestAnimationFrame = window.requestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.msRequestAnimationFrame;
+            window.requestAnimationFrame = requestAnimationFrame;
+        })();
+
+        const colors = ['#000030', '#4d4398', '#4784bf', '#000030', '#4d4398', '#ffffff']
+
+        //Utility Function
+        function randomIntFromRange(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+
+        function randomColor(colors) {
+            return colors[Math.floor(Math.random() * colors.length)]
+        }
+
+        // Objects
+        function Particle(x, y, radius, color) {
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+            this.color = color;
+            this.radians = Math.random() * Math.PI * 2;
+            this.velocity = 0.001;
+            this.distanceFormCenter = randomIntFromRange(10, canvas.width / 2 + 100);
+
+            this.update = () => {
+
+                // Move points over time
+                this.radians += this.velocity;
+
+                //Circular Motion
+                this.x = Math.cos(this.radians) * this.distanceFormCenter + canvas.width / 2;
+                this.y = Math.sin(this.radians) * this.distanceFormCenter + canvas.height / 2;
+                this.draw();
+            }
+
+            this.draw = () => {
+                ctx.beginPath();
+                ctx.fillStyle = this.color;
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                ctx.globalAlpha = .8;
+                ctx.fill();
+            };
+        }
+
+        // Implementation
+        let perticles;
+        function init() {
+            perticles = []
+
+            for (let i = 0; i < 1200; i++) {
+                const radius = (Math.random()) + .5;
+                perticles.push(new Particle(canvas.width / 2, canvas.height / 2, radius, randomColor(colors)));
+            }
+        }
+
+        // Animation Loop
+        function animate() {
+            requestAnimationFrame(animate);
+            var g = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            g.addColorStop(0, 'rgba(19,27,35,.05)');
+            g.addColorStop(1, 'rgba(10,20,67,.05)');
+            ctx.fillStyle = g;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            perticles.forEach(perticles => {
+                perticles.update();
+            });
+        }
+
+        init();
+        animate();
+    }
+}
+</script>
+</head>
+<body>
+
+<div class="moon"></div>
+<div class="moon__crater moon__crater1"></div>
+<div class="moon__crater moon__crater2"></div>
+<div class="moon__crater moon__crater3"></div>
+
+<div class="star star1"></div>
+<div class="star star2"></div>
+<div class="star star3"></div>
+<div class="star star4"></div>
+<div class="star star5"></div>
+
+<div class="error">
+  <div class="error__title">Hi</div>
+  <div class="error__subtitle">ERROR 404</div>
+  <div class="error__description">你来到了没有爱的荒原</div>
+  <a href="https://www.zhoujianghan.com" style="color:#21252c;"><button class="error__button error__button--active">网站首页</button></a>
+  <a href="https://www.zhoujianghan.com/#tab-sayhi" style="color:#21252c;"><button class="error__button">联系作者</button></a>
+  <br><br><br><br><center><a target="_blank" href="http://beian.miit.gov.cn" style="color:#21252c;">渝ICP备16001749号</a><br><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=50023802000134" style="color:#21252c;"><img src="https://baota.zhoujianghan.com/beian.png"> 渝公网安备50023802000134号</a></center>
+</div>
+<div id="wrap">
+    <canvas id="canvas">
+    </canvas>
+</div>
+</body>
+</html>
